@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-    <display-name>survey-service</display-name>
+    <display-name>spring-session-redis</display-name>
 
     <!-- 设置session过期时间为120分钟 -->
     <session-config>
