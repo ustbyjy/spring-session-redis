@@ -17,22 +17,24 @@ public class DemoController {
     public String setSession(HttpServletRequest request) {
         String name = request.getParameter("name");
         String value = request.getParameter("value");
+        logger.info("set:" + name + "=" + value);
         request.getSession().setAttribute(name, value);
 
         return "success";
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public String getSession(HttpServletRequest request) {
-        String name = request.getParameter("name");
-        logger.info("------" + request.getSession().getAttribute(name));
+    public String getSession(HttpServletRequest request, String name) {
+        String value = (String) request.getSession().getAttribute(name);
+        logger.info("get:" + name + "=" + value);
 
         return "success";
     }
 
     @RequestMapping(value = "/remove", method = RequestMethod.GET)
-    public String removeSession(HttpServletRequest request) {
-        String name = request.getParameter("name");
+    public String removeSession(HttpServletRequest request, String name) {
+        String value = (String) request.getSession().getAttribute(name);
+        logger.info("remove:" + name + "=" + value);
         request.getSession().removeAttribute(name);
 
         return "success";

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <property name="LOG_HOME" value="/export/logs/spring-session-demo/" />
-    <property name="APP_NAME" value="spring-session-demo" />
+    <property name="LOG_HOME" value="/export/logs/spring-session-redis/" />
+    <property name="APP_NAME" value="spring-session-redis" />
 
     <!-- appender是负责写日志的组件，ConsoleAppender把日志输出到控制台 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
