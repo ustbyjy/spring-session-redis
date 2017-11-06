@@ -24,7 +24,10 @@
     <!-- 创建名为springSessionRepositoryFilter的Spring Bean，继承自Filter。
          springSessionRepositoryFilter替换容器默认的HttpSession支持为Spring Session，
          将Session实例存放在Redis中. -->
-    <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration" />
+    <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+        <!-- 设置session过期时间，注意：使用Spring Session时在web.xml中设置session过期时间是无效的 -->
+        <property name="maxInactiveIntervalInSeconds" value="3600" />
+    </bean>
 
     <!-- 使用LettuceConnectionFactory -->
     <!--<bean class="org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory">-->
