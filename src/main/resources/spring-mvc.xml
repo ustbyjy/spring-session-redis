@@ -35,10 +35,20 @@
     <!--<property name="port" value="${redis.port}" />-->
     <!--</bean>-->
 
+    <bean id="redisSentinelConfiguration" class="org.springframework.data.redis.connection.RedisSentinelConfiguration">
+        <constructor-arg name="master" value="${redis.sentinel.master}" />
+        <constructor-arg name="sentinelHostAndPorts">
+            <set>
+                <value>${redis.sentinel.sentinel.1}</value>
+                <value>${redis.sentinel.sentinel.2}</value>
+                <value>${redis.sentinel.sentinel.3}</value>
+            </set>
+        </constructor-arg>
+    </bean>
+
     <!-- 也可以将使用LettuceConnectionFactory改成使用JedisConnectionFactory，两者保留其一就好 -->
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy">
-        <property name="hostName" value="${redis.ip}" />
-        <property name="port" value="${redis.port}" />
+        <constructor-arg name="sentinelConfig" ref="redisSentinelConfiguration" />
     </bean>
 
     <!-- 让Spring Session不再执行config命令 -->
