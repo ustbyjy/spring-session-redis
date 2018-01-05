@@ -18,4 +18,10 @@ public class CommonTest {
         Date date = new Date(1509701760000L);
         System.out.println(date);
     }
+
+    @Test
+    public void testDir() {
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println(System.getProperty("user.home"));
+    }
 }
