@@ -19,8 +19,6 @@
 
     <mvc:annotation-driven />
 
-    <context:property-placeholder location="classpath:/*.properties" ignore-unresolvable="true" />
-
     <!-- 创建名为springSessionRepositoryFilter的Spring Bean，继承自Filter。
          springSessionRepositoryFilter替换容器默认的HttpSession支持为Spring Session，
          将Session实例存放在Redis中. -->
@@ -55,6 +53,8 @@
 
     <!-- 也可以将使用LettuceConnectionFactory改成使用JedisConnectionFactory，两者保留其一就好 -->
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy">
+        <property name="hostName" value="${redis.ip}" />
+        <property name="port" value="${redis.port}" />
         <property name="poolConfig" ref="poolConfig" />
         <!-- 使用集群配置 -->
         <!--<constructor-arg name="sentinelConfig" ref="redisSentinelConfiguration" />-->
@@ -68,4 +68,13 @@
         <property name="prefix" value="/WEB-INF/pages/" />
         <property name="suffix" value=".jsp" />
     </bean>
+
+    <beans profile="home">
+        <context:property-placeholder location="classpath:redis-home.properties" ignore-unresolvable="true" />
+    </beans>
+
+    <beans profile="company">
+        <context:property-placeholder location="classpath:redis-company.properties" ignore-unresolvable="true" />
+    </beans>
+
 </beans>

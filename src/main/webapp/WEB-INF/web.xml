@@ -5,10 +5,15 @@
 
     <display-name>spring-session-redis</display-name>
 
-    <!-- 设置session过期时间为120分钟 -->
+    <!-- 设置session过期时间为120分钟，若使用Spring Session，此处设置无效 -->
     <session-config>
         <session-timeout>120</session-timeout>
     </session-config>
+
+    <context-param>
+        <param-name>spring.profiles.default</param-name>
+        <param-value>home</param-value>
+    </context-param>
 
     <context-param>
         <param-name>logbackConfigLocation</param-name>
