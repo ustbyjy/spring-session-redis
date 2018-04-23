@@ -56,7 +56,8 @@
     <!-- 也可以将使用LettuceConnectionFactory改成使用JedisConnectionFactory，两者保留其一就好 -->
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" destroy-method="destroy">
         <property name="poolConfig" ref="poolConfig" />
-        <constructor-arg name="sentinelConfig" ref="redisSentinelConfiguration" />
+        <!-- 使用集群配置 -->
+        <!--<constructor-arg name="sentinelConfig" ref="redisSentinelConfiguration" />-->
     </bean>
 
     <!-- 让Spring Session不再执行config命令 -->
