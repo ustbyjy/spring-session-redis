@@ -27,6 +27,14 @@
         <property name="maxInactiveIntervalInSeconds" value="3600" />
     </bean>
 
+    <bean id="defaultCookieSerializer" class="org.springframework.session.web.http.DefaultCookieSerializer">
+        <property name="cookieName" value="SPRING_SESSION" />
+        <property name="cookiePath" value="/" />
+        <!--<property name="domainName" value="" />-->
+        <!--<property name="useHttpOnlyCookie" value="true" />-->
+        <!--<property name="cookieMaxAge" value="3153600" />-->
+    </bean>
+
     <!-- 使用LettuceConnectionFactory -->
     <!--<bean class="org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory">-->
     <!--<property name="hostName" value="${redis.ip}" />-->
